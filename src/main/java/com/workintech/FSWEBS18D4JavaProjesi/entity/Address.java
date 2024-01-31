@@ -29,7 +29,8 @@ public class Address {
     @Column(name = "country")
     private String country;
 
-    @Column(name = "description")
+    //Column definition yazmak yerine @Lob da yazılabilir!
+    @Column(name = "description",columnDefinition = "TEXT")
     private String description;
 
     @OneToOne(cascade = {CascadeType.DETACH ,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},mappedBy = "address")

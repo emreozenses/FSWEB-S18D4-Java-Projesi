@@ -14,4 +14,6 @@ public interface AddressService {
     AddressResponse save(Address address);
 
     AddressResponse remove(long id);
+
+    Address findByIdAddress (long id);
 }

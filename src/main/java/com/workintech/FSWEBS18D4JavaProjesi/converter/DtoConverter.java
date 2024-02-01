@@ -44,7 +44,7 @@ public class DtoConverter {
 
     }
 
-    public static AddressResponse convertToAdressResponse (Address address){
+    public static AddressResponse convertToAddressResponse (Address address){
         return new AddressResponse(address.getId(), address.getStreet(), address.getNo(), address.getCity(), address.getCountry(), address.getDescription());
     }
 

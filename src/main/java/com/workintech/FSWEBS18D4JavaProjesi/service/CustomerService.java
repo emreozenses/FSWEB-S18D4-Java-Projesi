@@ -1,6 +1,7 @@
 package com.workintech.FSWEBS18D4JavaProjesi.service;
 
 import com.workintech.FSWEBS18D4JavaProjesi.dto.CustomerResponse;
+import com.workintech.FSWEBS18D4JavaProjesi.entity.Address;
 import com.workintech.FSWEBS18D4JavaProjesi.entity.Customer;
 
 import java.util.List;
@@ -14,4 +15,6 @@ public interface CustomerService {
     CustomerResponse save (Customer customer);
 
     CustomerResponse remove (long id);
+
+    Customer findByIdCustomer (long id);
 }

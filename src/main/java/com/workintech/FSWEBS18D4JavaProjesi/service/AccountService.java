@@ -11,8 +11,10 @@ public interface AccountService {
 
     AccountResponse findById(long id);
 
-    AccountResponse save(Account account);
+    AccountResponse saveId(Account account, long id);
 
     AccountResponse remove(long id);
+
+    Account findByIdAccount(long id);
 
 }

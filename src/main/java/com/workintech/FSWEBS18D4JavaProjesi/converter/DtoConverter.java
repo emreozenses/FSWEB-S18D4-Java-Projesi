@@ -12,8 +12,8 @@ import java.util.List;
 
 public class DtoConverter {
 
-    public static AccountResponse convertToAccountResponse (Account account){
-        return new AccountResponse(account.getId(), account.getAccountName(), account.getMoneyAmount());
+    public static AccountResponse convertToAccountResponse (Account account,long id){
+        return new AccountResponse(account.getId(), account.getAccountName(), account.getMoneyAmount(),new CustomerResponse(account.getCustomer().getId(),account.getCustomer().getEmail(),account.getCustomer().getSalary()));
     }
 
     public static List<AccountResponse> convertToAccountResponseList (List<Account> accountList){
@@ -21,16 +21,15 @@ public class DtoConverter {
         List<AccountResponse> accountResponseList = new ArrayList<>();
 
         accountList.forEach(account -> {
-            accountResponseList.add(new AccountResponse(account.getId(), account.getAccountName(), account.getMoneyAmount()));
+            accountResponseList.add(new AccountResponse(account.getId(), account.getAccountName(), account.getMoneyAmount(),new CustomerResponse(account.getCustomer().getId(),account.getCustomer().getEmail(),account.getCustomer().getSalary())));
         });
         return accountResponseList;
 
     }
 
     public static CustomerResponse convertToCustomerResponse (Customer customer){
-        return new CustomerResponse(customer.getId(), customer.getFirstName(), customer.getLastName(), customer.getEmail(), customer.getSalary(),
-                new AddressResponse(customer.getAddress().getId(),customer.getAddress().getStreet(),customer.getAddress().getNo(),customer.getAddress().getCity(),customer.getAddress().getCountry(),customer.getAddress().getDescription()),
-                convertToAccountResponseList(customer.getAccountList()));
+        return new CustomerResponse(customer.getId(), customer.getEmail(), customer.getSalary());
+
     }
 
     public static List<CustomerResponse> convertToCustomerResponseList (List<Customer> customerList){
@@ -38,13 +37,13 @@ public class DtoConverter {
         List<CustomerResponse> customerResponseList = new ArrayList<>();
 
         customerList.forEach(customer -> {
-            customerResponseList.add(new CustomerResponse(customer.getId(), customer.getFirstName(), customer.getLastName(), customer.getEmail(), customer.getSalary(),new AddressResponse(customer.getAddress().getId(),customer.getAddress().getStreet(),customer.getAddress().getNo(),customer.getAddress().getCity(),customer.getAddress().getCountry(),customer.getAddress().getDescription()),convertToAccountResponseList(customer.getAccountList())));
+            customerResponseList.add(new CustomerResponse(customer.getId(),  customer.getEmail(), customer.getSalary()));
         });
         return customerResponseList;
 
     }
 
-    public static AddressResponse convertToAddressResponse (Address address){
+    public static AddressResponse convertToAddressResponse (Address address,long id){
         return new AddressResponse(address.getId(), address.getStreet(), address.getNo(), address.getCity(), address.getCountry(), address.getDescription());
     }
 

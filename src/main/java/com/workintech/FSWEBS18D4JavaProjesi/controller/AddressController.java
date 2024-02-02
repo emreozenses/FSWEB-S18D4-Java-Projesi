@@ -31,9 +31,9 @@ public class AddressController {
         return addressService.findById(id);
     }
 
-    @PostMapping("/address")
-    public AddressResponse save(@RequestBody Address address){
-        return addressService.save(address);
+    @PostMapping("/address/{customerId}")
+    public AddressResponse save(@RequestBody Address address,@PathVariable long customerId){
+        return addressService.saveId(address,customerId);
     }
 
     @PutMapping("/address/{id}")
@@ -46,7 +46,7 @@ public class AddressController {
          foundAddress.setCountry(address.getCountry());
          foundAddress.setDescription(address.getDescription());
 
-         return addressService.save(foundAddress);
+         return addressService.saveId(foundAddress,id);
     }
     @DeleteMapping("/address/{id}")
     public AddressResponse delete(@PathVariable long id){

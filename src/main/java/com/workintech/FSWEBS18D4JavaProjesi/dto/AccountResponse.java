@@ -1,4 +1,4 @@
 package com.workintech.FSWEBS18D4JavaProjesi.dto;
 
-public record AccountResponse(long id,String accountName,double moneyAmount) {
+public record AccountResponse(Long id,String accountName,Double moneyAmount,CustomerResponse customerResponse) {
 }
